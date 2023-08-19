@@ -76,7 +76,8 @@
     const balEth = parseFloat(formatEther(bal)).toFixed(4)
     msgAdd('ETH Balance', balEth)
     $('#msg').html(msg)
-    const prices = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum%2Cgains-network%2Cchainlink&vs_currencies=Usd')
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum%2Cgains-network%2Cchainlink&vs_currencies=Usd')
+    const prices = await res.json()
     alert(prices)
   } catch (e){
     alert(e)
