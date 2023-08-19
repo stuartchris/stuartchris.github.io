@@ -78,7 +78,7 @@
     $('#msg').html(msg)
     const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum%2Cgains-network%2Cchainlink&vs_currencies=Usd')
     const prices = await res.json()
-    alert(prices)
+    alert(prices.chainlink.usd)
   } catch (e){
     alert(e)
   }
