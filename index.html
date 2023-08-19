@@ -17,9 +17,9 @@
   const main = async () => { 
     alert('main')
     let rewardsContract = new Contract('0xde5750071CacA8db173FC6543D23d0BCACACFEC3', rewardsAbi, provider)
-    // let rnd = await rewardsContract.currentRound()
-    if (rewardsContract) {
-      alert('yes')
+    let rnd = await rewardsContract.currentRound()
+    if (rnd) {
+      alert(rnd)
     } else {
       alert('no')
     }
