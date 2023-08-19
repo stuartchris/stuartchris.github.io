@@ -20,6 +20,7 @@
   let provider = new ethers.JsonRpcProvider('https://arb1.arbitrum.io/rpc')
   const main = async () => { 
     alert('main5')
+  try{
     let rewardsContract = new Contract(rewardsAddr, rewardsAbi, provider)
     let rnd = await rewardsContract.currentRound()
     let claimCurr = await rewardsContract.roundOrdersToClaim(wAddr, rnd)
@@ -31,6 +32,9 @@
       alert('no')
     }
     alert('main-end')
+  } catch (e){
+    alert(e)
+  }
   }
   main()
   </script>
