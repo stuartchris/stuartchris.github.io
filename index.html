@@ -34,11 +34,14 @@
     let entrCurr = parseInt(tknCurr.totalEntries)
     msgAdd('Entries', entrCurr)
     let claimCurr = await rewardsContract.roundOrdersToClaim(wAddr, rnd)
-    msgAdd('Claim', claimCurr)
-    let pendTkn = ((tknCurrEth/entrCurr) * parseInt(claimCurr)).toFixed(1)
-    msgAdd('Pending', pendTkn)
+    if(parseInt(claimCurr) > 0){
+      msgAdd('Claim', claimCurr)
+      let pendTkn = ((tknCurrEth/entrCurr) * parseInt(claimCurr)).toFixed(1)
+      msgAdd('Pending', pendTkn)
+      pendTotal += parseFloat(pendTkn)
+    }
+    msgAdd(' _____________','')
     msgAdd(':_____________','')
-    pendTotal += parseFloat(pendTkn)
   }
   const main = async () => { 
     $('#msg').html('Loading....') 
@@ -51,6 +54,9 @@
       await getRnd(r.toString())
     }
     msgAdd('Total', pendTotal)
+    const bal = await provider.getBalance(wAddr)
+    const balEth = parseFloat(formatEther(bal)).toFixed(1)
+    msgAdd('Balance', balEth)
     $('#msg').html(msg)
   } catch (e){
     alert(e)
