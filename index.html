@@ -78,10 +78,10 @@
     msgAdd('GNS Balance', `${gnsBalEth} * $${gnsPrice} = $${(gnsBalEth * gnsPrice).toFixed(2)}`)
     const linkBal = await linkContract.balanceOf(wAddr)
     const linkBalEth = parseFloat(formatEther(linkBal)).toFixed(2)
-    msgAdd('LINK Balance', `${linkBalEth} * $${linkPrice} = $${(linkBalEth * linkPrice).toFixed(2)}`))
+    msgAdd('LINK Balance', `${linkBalEth} * $${linkPrice} = $${(linkBalEth * linkPrice).toFixed(2)}`)
     const bal = await provider.getBalance(wAddr)
     const balEth = parseFloat(formatEther(bal)).toFixed(4)
-    msgAdd('ETH Balance', balEth)
+    msgAdd('ETH Balance', `${balEth} * $${ethPrice} = $${(balEth * ethPrice).toFixed(2)}`)
     $('#msg').html(msg)
   } catch (e){
     alert(e)
