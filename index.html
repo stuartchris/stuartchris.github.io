@@ -11,6 +11,8 @@
     }
   </style>
 <body>
+  <div id="msg">Loading...</div>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
   <script type="module">
   // alert('start')
   import { ethers, Contract, formatEther } from "https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.min.js";
@@ -19,19 +21,20 @@
   const wAddr = '0x6A33B68894C643a92B94A95B6D950adD64B2a179'
   let provider = new ethers.JsonRpcProvider('https://arb1.arbitrum.io/rpc')
   const main = async () => { 
-    alert('main5')
+    $('#msg').html('main6')
+    let msg = ""
   try{
     let rewardsContract = new Contract(rewardsAddr, rewardsAbi, provider)
     let rnd = await rewardsContract.currentRound()
-    let claimCurr = await rewardsContract.roundOrdersToClaim(wAddr, rnd)
+    msg+= `Round: ${rnd}<br>`
     let tknCurr = await rewardsContract.roundTokens(rnd)
     let tknCurrEth = parseFloat(formatEther(tknCurr.tokens)).toFixed(2)
-    if (tknCurrEth) {
-      alert(tknCurrEth)
-    } else {
-      alert('no')
-    }
-    alert('main-end')
+    msg+= `Tokens: ${tknCurrEth}<br>`
+    let entrCurr = parseInt(tknCurr.totalEntries)
+    msg+= `Entries: ${entrCurr}<br>`
+    let claimCurr = await rewardsContract.roundOrdersToClaim(wAddr, rnd)
+    msg+= `Claim: ${claimCurr}<br>`
+    $('#msg').html(msg)
   } catch (e){
     alert(e)
   }
