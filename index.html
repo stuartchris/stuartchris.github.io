@@ -62,7 +62,7 @@
     let toClaim = await rewardsContract.tokensToClaim(wAddr)
     const toClaimEth = parseFloat(formatEther(toClaim)).toFixed(4)
     if(toClaimEth > 0){
-      msgAdd('To Claim', toClaimEth)
+      msgAdd('GNS To Claim', toClaimEth)
       pendTotal += parseFloat(toClaimEth) 
     }
     msgAdd('GNS Pending', pendTotal)
