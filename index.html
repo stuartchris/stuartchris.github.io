@@ -63,7 +63,7 @@
     const toClaimEth = parseFloat(formatEther(toClaim)).toFixed(4)
     if(toClaimEth > 0){
       msgAdd('To Claim', toClaimEth)
-      pendTotal += toClaimEth 
+      pendTotal += parseFloat(toClaimEth) 
     }
     msgAdd('GNS Pending', pendTotal)
     const gnsBal = await gnsContract.balanceOf(wAddr)
