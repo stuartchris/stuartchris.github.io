@@ -46,7 +46,7 @@
     let claimCurr = await rewardsContract.roundOrdersToClaim(wAddr, rnd)
     if(parseInt(claimCurr) > 0){
       msgAdd('Claim', claimCurr)
-      let pendTkn = ((tknCurrEth/entrCurr) * parseInt(claimCurr)).toFixed(1)
+      let pendTkn = ((tknCurrEth/entrCurr) * parseInt(claimCurr)).toFixed(2)
       msgAdd('Pending', pendTkn)
       pendTotal += parseFloat(pendTkn)
     }
