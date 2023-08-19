@@ -54,6 +54,8 @@
     msgAdd('Order', `${ord} of 50 (${((parseInt(ord)/50)*100).toFixed(0)}%)`)
     let rnd = await rewardsContract.currentRound()
     let rndInt = parseInt(rnd)
+    const claimNext = await rewardsContract.roundOrdersToClaim(wAddr, rndInt + 1)
+    msgAdd('Next', claimNext)
     for(let r = rndInt; r > rndInt - 3; r--){
       await getRnd(r.toString())
     }
