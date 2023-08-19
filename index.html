@@ -43,7 +43,7 @@
     let rnd = await rewardsContract.currentRound()
     
     for(let r = parseInt(rnd); r > rnd-3; r--){
-      getRnd(rnd)
+      getRnd(r)
     }
     
     $('#msg').html(msg)
