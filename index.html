@@ -26,6 +26,11 @@
   let rewardsContract = new Contract(rewardsAddr, rewardsAbi, provider)
   let gnsContract = new Contract(gnsAddr, erc20Abi, provider)
   let linkContract = new Contract(linkAddr, erc20Abi, provider)
+  let fmtOpt = {
+         style: 'currency',
+         currency: 'USD',
+         minimumFractionDigits: 3,
+  }
   let msg = ""
   let pendTotal = 0
   const msgAdd = (label, val) =>{
@@ -81,7 +86,7 @@
     msgAdd('LINK Balance', `${linkBalEth} * $${linkPrice} = $${(linkBalEth * linkPrice).toFixed(2)}`)
     const bal = await provider.getBalance(wAddr)
     const balEth = parseFloat(formatEther(bal)).toFixed(4)
-    msgAdd('ETH Balance', `${balEth} * $${ethPrice} = $${(balEth * ethPrice).toFixed(2)}`)
+    msgAdd('ETH Balance', `${balEth} * ${ethPrice.toLocaleString("en-US",fmtOpt)} = $${(balEth * ethPrice).toFixed(2)}`)
     $('#msg').html(msg)
   } catch (e){
     alert(e)
