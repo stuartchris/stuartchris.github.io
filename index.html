@@ -10,12 +10,13 @@
 <body>
   <script type="module">
   import { ethers } from "https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.min.js";
-  let provider;
-if (window.ethereum == null) {
-  alert('nope')
-} else {
-  alert('yep')
-}
+  let provider = new ethers.JsonRpcProvider('https://arb1.arbitrum.io/rpc')
+  const main = async () => {
+    const block = await provider.getBlockNumber()
+    alert(block)
+
+  }
+  main ()
   </script>
 </body>
 </html>
