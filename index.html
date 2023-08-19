@@ -37,12 +37,14 @@
     msgAdd('Claim', claimCurr)
     let pendTkn = ((tknCurrEth/entrCurr) * parseInt(claimCurr)).toFixed(1)
     msgAdd('Pending', pendTkn)
-    msgAdd(':_________________________','')
+    msgAdd(':_____________','')
     pendTotal += parseFloat(pendTkn)
   }
   const main = async () => { 
     $('#msg').html('Loading....') 
   try{
+    let ord = await rewardsContract.currentOrder()
+    msgAdd('Order', `${ord} of 50 (${((parseInt(ord)/50)*100).toFixed(0)}%)`)
     let rnd = await rewardsContract.currentRound()
     let rndInt = parseInt(rnd)
     for(let r = rndInt; r > rndInt - 3; r--){
