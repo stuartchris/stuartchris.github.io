@@ -40,12 +40,12 @@
     pendTotal += pendTkn
   }
   const main = async () => { 
-    $('#msg').html('Loading...') 
+    $('#msg').html('Loading....') 
   try{
     let rnd = await rewardsContract.currentRound()
     let rndInt = parseInt(rnd)
     for(let r = rndInt; r > rndInt - 3; r--){
-      getRnd(r.toString())
+      await getRnd(r.toString())
     }
     msgAdd('Total', pendTotal)
     $('#msg').html(msg)
