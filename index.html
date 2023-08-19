@@ -16,7 +16,7 @@
   const wAddr = ''
   let provider = new ethers.JsonRpcProvider('https://arb1.arbitrum.io/rpc')
   const main = async () => { 
-    alert('main1')
+    alert('main2')
     let rewardsContract = new Contract(rewardsAddr, rewardsAbi, provider)
     let rnd = await rewardsContract.currentRound()
     if (rnd) {
