@@ -37,7 +37,8 @@
     msgAdd('Claim', claimCurr)
     let pendTkn = ((tknCurrEth/entrCurr) * parseInt(claimCurr)).toFixed(1)
     msgAdd('Pending', pendTkn)
-    pendTotal += pendTkn
+    msgAdd(':_________________________','')
+    pendTotal += parseFloat(pendTkn)
   }
   const main = async () => { 
     $('#msg').html('Loading....') 
