@@ -24,7 +24,7 @@
     let rnd = await rewardsContract.currentRound()
     let claimCurr = await rewardsContract.roundOrdersToClaim(wAddr, rnd)
     let tknCurr = await rewardsContract.roundTokens(rnd)
-    let tknCurrEth = formatEther(tknCurr.tokens)
+    let tknCurrEth = formatEther(tknCurr.tokens).toFixed(2)
     if (tknCurrEth) {
       alert(tknCurrEth)
     } else {
