@@ -59,6 +59,10 @@
     for(let r = rndInt; r > rndInt - 3; r--){
       await getRnd(r.toString())
     }
+    let toClaim = await rewardsContract.tokensToClaim(wAddr)
+    const toClaimEth = parseFloat(formatEther(toClaim)).toFixed(2)
+    msgAdd('To Claim', toClaimEth
+    pendTotal += toClaimEth       
     msgAdd('GNS Pending', pendTotal)
     const gnsBal = await gnsContract.balanceOf(wAddr)
     const gnsBalEth = parseFloat(formatEther(gnsBal)).toFixed(2)
