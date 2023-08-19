@@ -4,9 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>Gains Network</title></head>
-
+  <style>
+    body {
+      background-color: black;
+    }
+  </style>
 <body>
   <script type="module">
   // alert('start')
@@ -20,8 +23,9 @@
     let rewardsContract = new Contract(rewardsAddr, rewardsAbi, provider)
     let rnd = await rewardsContract.currentRound()
     let claimCurr = await rewardsContract.roundOrdersToClaim(wAddr, rnd)
-    if (claimCurr) {
-      alert(claimCurr)
+    let tknCurr = await rewardsContract.roundTokens(rnd)
+    if (tknCurr) {
+      alert(tknCurr.tokens)
     } else {
       alert('no')
     }
