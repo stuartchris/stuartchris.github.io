@@ -29,7 +29,7 @@
   let fmtOpt = {
          style: 'currency',
          currency: 'USD',
-         minimumFractionDigits: 3,
+         minimumFractionDigits: 2,
   }
   let msg = ""
   let pendTotal = 0
@@ -80,7 +80,7 @@
     msgAdd('GNS Pending', `${pendTotal} * $${gnsPrice} = $${(pendTotal * gnsPrice).toFixed(2)}`)
     const gnsBal = await gnsContract.balanceOf(wAddr)
     const gnsBalEth = parseFloat(formatEther(gnsBal)).toFixed(2)
-    msgAdd('GNS Balance', `${gnsBalEth} * $${gnsPrice} = $${(gnsBalEth * gnsPrice).toFixed(2)}`)
+    msgAdd('GNS Balance', `${gnsBalEth} * $${gnsPrice} = ${(gnsBalEth * gnsPrice).toLocaleString("en-US",fmtOpt)}`)
     const linkBal = await linkContract.balanceOf(wAddr)
     const linkBalEth = parseFloat(formatEther(linkBal)).toFixed(2)
     msgAdd('LINK Balance', `${linkBalEth} * $${linkPrice} = $${(linkBalEth * linkPrice).toFixed(2)}`)
