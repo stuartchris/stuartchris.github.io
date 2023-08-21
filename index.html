@@ -77,7 +77,7 @@
     const ethPrice = prices.ethereum.usd
 
     
-    msgAdd('GNS Pending', `${pendTotal} * $${gnsPrice} = $${(pendTotal * gnsPrice).toFixed(2)}`)
+    msgAdd('GNS Pending', `${parseFloat(pendTotal).toFixed(4)} * $${gnsPrice} = $${(pendTotal * gnsPrice).toFixed(2)}`)
     const gnsBal = await gnsContract.balanceOf(wAddr)
     const gnsBalEth = parseFloat(formatEther(gnsBal)).toFixed(2)
     msgAdd('GNS Balance', `${gnsBalEth} * $${gnsPrice} = ${(gnsBalEth * gnsPrice).toLocaleString("en-US",fmtOpt)}`)
