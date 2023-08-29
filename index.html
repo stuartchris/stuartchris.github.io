@@ -46,9 +46,20 @@
     let claimCurr = await rewardsContract.roundOrdersToClaim(wAddr, rnd)
     if(parseInt(claimCurr) > 0){
       msgAdd('Claim', claimCurr)
+      localStorage.setItem(`${rnd}_claim`, parseInt(claimCurr))
       let pendTkn = ((tknCurrEth/entrCurr) * parseInt(claimCurr)).toFixed(2)
       msgAdd('Pending', pendTkn)
+      localStorage.setItem(`${rnd}_pend`, pendTkn)
       pendTotal += parseFloat(pendTkn)
+    } else {
+      const claimStored = localStorage.getItem(`${rnd}_claim`)
+      if(claimStored) {
+        msgAdd('Claimed', claimStored)
+      }
+      const pendStored = localStorage.getItem(`${rnd}_pend`)
+      if(pendStored) {
+        msgAdd('Reward', pendStored)
+      }
     }
     msgAdd(':-------------','')
   }
