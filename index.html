@@ -70,7 +70,7 @@
     let rndInt = parseInt(rnd)
     const claimNext = await rewardsContract.roundOrdersToClaim(wAddr, rndInt + 1)
     let ord = await rewardsContract.currentOrder()
-    msgAdd('Next Claim', `${claimNext} (${(parseInt(claimNext)/(parseInt(ord)/50)).toFixed(0)}`)
+    msgAdd('Next Claim', `${claimNext} (${(parseInt(claimNext)/(parseInt(ord)/50)).toFixed(0)})`)
     msgAdd('Order', `${ord} of 50 (${((parseInt(ord)/50)*100).toFixed(0)}%)`)
     for(let r = rndInt; r > rndInt - 4; r--){
       await getRnd(r.toString())
